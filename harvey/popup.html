@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extension Controls</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 10px;
+            background-color: #f9f9f9;
+            color: #333;
+            width: 220px;
+            height: 450px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            padding-top: 1rem;
+            padding-right: 25px;
+            padding-bottom: 1rem;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            color: #444;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .toggle-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            width: 100%;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .toggle-section span {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #444;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 48px;
+            height: 28px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: #2563eb;
+        }
+
+        input:focus+.slider {
+            box-shadow: 0 0 1px #2563eb;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(20px);
+        }
+
+        .feature-group {
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            width: 100%;
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+        }
+
+        button {
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: 8px;
+            background-color: #2563eb;
+            color: white;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background-color: #1d4ed8;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.5);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        button:disabled:hover {
+            background-color: #2563eb;
+            box-shadow: none;
+        }
+    </style>
+</head>
+
+<body class="font-sans">
+    <!-- Main container for the extension popup -->
+    <div class="container">
+        <h2>Extension Controls</h2>
+
+        <!-- Extension Activation Toggle -->
+        <div class="toggle-section">
+            <span>Extension Status</span>
+            <label class="switch">
+                <input type="checkbox" id="extensionToggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <!-- Security & Bypass Features Group -->
+        <div class="feature-group">
+            <h3>Security & Bypass Features</h3>
+            <div class="button-grid">
+                <button id="spoofIP">Spoof IP Address</button>
+                <button id="spoofOS">Spoof OS to Linux</button>
+                <button id="bypassAccessCode">Bypass Access Code</button>
+            </div>
+        </div>
+
+        <!-- Automation & Utility Features Group -->
+        <div class="feature-group">
+            <h3>Automation & Utility Features</h3>
+            <div class="button-grid">
+                <button id="solveMCQ">Choose correct option</button>
+                <button id="autotype">AutoType code</button>
+                <button id="bypassTC">Bypass Test Cases</button>
+                <button id="disable">Disable Tab/Window Switch</button>
+                <button id="reload">Reload Page & Extension</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link to the external JavaScript file -->
+    <script src="popup.js"></script>
+</body>
+
+</html>

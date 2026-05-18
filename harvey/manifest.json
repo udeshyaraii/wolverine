@@ -1,0 +1,82 @@
+{
+   "manifest_version": 3,
+   "name": "F**k Neo",
+   "description": "The Ultimate saviour of students that makes coding & problem solving fun on imneo/examly/neo-collab related platforms",
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyXKMSllCpa1zHLw0m7CbO1iAsi0iwQ5Ij45LbZsuvVnmmL0ahjrv+Rfbks1gZ2rE3nqJCvbyT9VUNMGlW9a09BTlRzrm9RhqaAdN6Mg4Y1fEdwQ6fB/UZG5eGEHKUmilxZrkfgfqVwPauLyIYBxTTyIJcYBQvg4mY1WutMpliP2Xbyva2f+t8iiXDer1lvqprNSbFv15bkwz6G5TJxTmvfK/yWKZUqPuI14WPyeo4KO5OA6+5aXONWw6S62n0D8LbadlkQMJM/Tn24tKAjSST0WpIViOn/rNOd/p1lTlrtXD9NkF3jDLblo+H0UwuItl+qhZd2why9tuejHGKWnS/wIDAQAB",
+   "host_permissions": [
+      "https://*/*"
+   ],
+   "version": "4.2",
+   "version_name": "v4.2 - Annex",
+   "action": {
+      "default_icon": {
+         "128": "images/icon128.png",
+         "16": "images/icon16.png",
+         "48": "images/icon48.png"
+      },
+      "default_popup": "popup.html"
+   },
+   "icons": {
+      "128": "images/icon128.png",
+      "16": "images/icon16.png",
+      "48": "images/icon48.png"
+   },
+   "background": {
+      "service_worker": "scripts/bg.js"
+   },
+   "content_scripts": [
+      {
+         "js": [
+            "scripts/utls.js",
+            "scripts/ath.js",
+            "scripts/cs.js"
+         ],
+         "matches": [
+            "https://*.examly.io/*",
+            "https://*/mycourses/details*",
+            "https://*/test?id=*"
+         ],
+         "exclude_matches": [
+            "https://*.examly.io/result*"
+         ],
+         "run_at": "document_end",
+         "world": "ISOLATED",
+         "matchOriginAsFallback": true
+      },
+      {
+         "js": [
+            "hooks/utls.js",
+            "hooks/cptr.js",
+            "hooks/intr.js",
+            "hooks/bps.js",
+            "hooks/ace.js"
+         ],
+         "matches": [
+            "https://*.examly.io/*",
+            "https://*/mycourses/details*",
+            "https://*/test?id=*"
+         ],
+         "run_at": "document_end",
+         "world": "MAIN",
+         "exclude_matches": [
+            "https://*.examly.io/result*",
+            "https://*.examly.io/login",
+            "https://*.examly.io/pwd"
+         ],
+         "matchOriginAsFallback": true
+      }
+   ],
+   "permissions": [
+      "management",
+      "tabs",
+      "storage",
+      "scripting"
+   ],
+   "externally_connectable": {
+      "matches": [
+         "https://*/mycourses/details*",
+         "https://*/test?id=*",
+         "https://*.examly.io/*"
+      ]
+   }
+}
